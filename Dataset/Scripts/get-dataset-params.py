@@ -102,6 +102,8 @@ for index in tqdm(range(filtered_mlo_dataframe.shape[0])):
         'roi_mask_file_numpy': file_roi_mask_procces
     }
 
+# Crear los directorios si no existen
+os.makedirs(os.path.dirname(PATH_DATASET), exist_ok=True)
 
 with open(PATH_DATASET, "wb") as f:
     print('en el archivo pkl')
