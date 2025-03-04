@@ -71,7 +71,8 @@ encoder = build_vgg16_encoder(input_shape=(HEIGHT, WIDTH, 1))
 encoded_output = encoder(input_img)
 
 # Construcción del decodificador
-decoded_output = decoder = build_vgg16_decoder(encoded_output)
+decoder = build_vgg16_decoder(input_shape=(16, 10, 512))
+decoded_output = decoder(encoded_output)
 
 #Construcción autoencoder
 autoencoder = models.Model(input_img, decoded_output, name="vgg16_autoencoder")
