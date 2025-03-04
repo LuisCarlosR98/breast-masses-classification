@@ -8,8 +8,8 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 #Constantes para la normalización de las imágenes
-HEIGHT = 320
-WIDTH = 512
+HEIGHT = 512
+WIDTH = 320
 FILE_DATASET_NAME = f"dataset_{WIDTH}_{HEIGHT}_CBIS-DDSM_dict.pkl"
 PATH_DATASET = f'~/lcruizDev/Data/{FILE_DATASET_NAME}'
 
