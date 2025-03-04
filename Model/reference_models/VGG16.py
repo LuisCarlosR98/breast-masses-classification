@@ -64,6 +64,7 @@ def build_vgg16_decoder(input_shape = (16, 10, 512)):
 
 # Obtener el dataset}
 (x_ray_train, y_roi_train), (x_ray_test, y_roi_test) = getMammographyDataset()
+print(x_ray_train.shape, y_roi_train.shape)
 
 # Construcción del autoencoder
 input_img = layers.Input(shape=(HEIGHT, WIDTH, 1))
@@ -84,7 +85,7 @@ autoencoder.summary()
 autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
 
 # Entrenamiento del autoencoder
-autoencoder.fit(x_ray_train, y_roi_train, epochs=30, batch_size=40, validation_data=(x_ray_test, y_roi_test))
+autoencoder.fit(x_ray_train, y_roi_train, epochs=10, batch_size=40, validation_data=(x_ray_test, y_roi_test))
 
 #Guardar el modelo entrenado
 autoencoder.save(MODEL_SAVE_PATH)
