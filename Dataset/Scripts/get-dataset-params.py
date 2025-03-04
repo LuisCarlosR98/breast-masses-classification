@@ -1,11 +1,17 @@
 import pandas as pd
 import numpy as np
 import pydicom
-import tensorflow as tf
 import pickle
 from PIL import Image
 import os
 from tqdm import tqdm
+import matplotlib.pyplot as plt
+
+#Constantes para la normalización de las imágenes
+HEIGHT = 320
+WIDTH = 512
+FILE_DATASET_NAME = f"dataset_{WIDTH}_{HEIGHT}_CBIS-DDSM_dict.pkl"
+PATH_DATASET = f'~/lcruizDev/Data/{FILE_DATASET_NAME}'
 
 # Función para procesar el archivo CSV y filtrar las filas con 'image view' = 'MLO'
 def process_csv(file_path):
@@ -62,7 +68,7 @@ def preprocess_image(file_path):
         url = url.replace('1-2.dcm', '1-1.dcm')
         image = load_dicom(url)
     gray_image = gray_scale(image)
-    resized_image = gray_image.resize((216,355))
+    resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
     np_rx = np.expand_dims(np_rx, axis = -1)
     return np_rx
@@ -97,7 +103,7 @@ for index in tqdm(range(filtered_mlo_dataframe.shape[0])):
     }
 
 
-with open("lcruiz_100_104_CBIS-DDSM_dict.pkl", "wb") as f:
+with open(PATH_DATASET, "wb") as f:
     print('en el archivo pkl')
     pickle.dump(dic, f)
 
