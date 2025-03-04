@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 HEIGHT = 512
 WIDTH = 320
 FILE_DATASET_NAME = f"dataset_{WIDTH}_{HEIGHT}_CBIS-DDSM_dict.pkl"
-PATH_DATASET = f'~/lcruizDev/Data/{FILE_DATASET_NAME}'
+PATH_DATASET = f'../../lcruizDev/Data/{FILE_DATASET_NAME}'
 
 # Función para procesar el archivo CSV y filtrar las filas con 'image view' = 'MLO'
 def process_csv(file_path):
