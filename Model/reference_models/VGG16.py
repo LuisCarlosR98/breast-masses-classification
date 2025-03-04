@@ -84,7 +84,7 @@ autoencoder.summary()
 autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
 
 # Entrenamiento del autoencoder
-autoencoder.fit(x_ray_train, y_roi_train, epochs=30, batch_size=64, validation_data=(x_ray_test, y_roi_test))
+autoencoder.fit(x_ray_train, y_roi_train, epochs=30, batch_size=40, validation_data=(x_ray_test, y_roi_test))
 
 #Guardar el modelo entrenado
 autoencoder.save(MODEL_SAVE_PATH)
