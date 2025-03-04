@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from tensorflow.keras import layers, models
 from load_dataset import getMammographyDataset
 
+MODEL_SAVE_PATH = "../../lcruizDev/Models/vgg16_autoencoder.h5"
+
 #Constantes para el tamaño de las imágenes
 HEIGHT = 512
 WIDTH = 320
@@ -84,5 +86,5 @@ autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
 autoencoder.fit(x_ray_train, y_roi_train, epochs=30, batch_size=64, validation_data=(x_ray_test, y_roi_test))
 
 #Guardar el modelo entrenado
-autoencoder.save("vgg16_autoencoder.h5")
+autoencoder.save(MODEL_SAVE_PATH)
 
