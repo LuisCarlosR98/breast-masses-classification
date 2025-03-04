@@ -4,7 +4,7 @@ import numpy as np
 
 def getMammographyDataset():
     # Cargar el dataset en formato .pkl
-    file_path = '/content/dataset/dataset_320_512_CBIS-DDSM_dict.pkl'
+    file_path = '~/lcruizDev/Data/dataset_320_512_CBIS-DDSM_dict.pkl'
     with open(file_path, 'rb') as file:
         dataset = pickle.load(file)
 
