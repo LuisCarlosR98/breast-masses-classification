@@ -71,7 +71,6 @@ def preprocess_image(file_path):
     gray_image = gray_scale(image)
     resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
-    np_rx = tf.image.grayscale_to_rgb(np_rx)
     np_rx = np.expand_dims(np_rx, axis = -1)
     return np_rx
 
