@@ -71,6 +71,7 @@ def preprocess_image(file_path):
     resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
     np_rx = np.expand_dims(np_rx, axis = -1)
+    print('np_rx.shape', np_rx.shape)
     return np_rx
 
 # Función para mostrar una imagen
