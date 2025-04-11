@@ -54,9 +54,9 @@ def normalize_image(image_array):
 
 # Función para escalar una imagen
 def gray_scale(image_array):
-    scaled_image=(np.maximum(image_array,0)/image_array.max())*255
-    scaled_image=np.uint8(scaled_image)
-    return Image.fromarray(scaled_image)
+    """ scaled_image=(np.maximum(image_array,0)/image_array.max())*255
+    scaled_image=np.uint8(scaled_image) """
+    return Image.fromarray(image_array)
 
 # Función para preprocesar una imagen
 def preprocess_image(file_path):
