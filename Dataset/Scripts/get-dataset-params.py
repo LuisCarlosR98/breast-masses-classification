@@ -68,7 +68,7 @@ def preprocess_image(file_path):
         url = url.replace('1-2.dcm', '1-1.dcm')
         image = load_dicom(url)
     gray_image = gray_scale(image)
-    resized_image = gray_image.resize((WIDTH, HEIGHT))
+    resized_image = gray_image.resize((WIDTH, HEIGHT, 3))
     np_rx = np.array(resized_image)
     print('np_rx.shape', np_rx.shape)
     np_rx = np.expand_dims(np_rx, axis = -1)
