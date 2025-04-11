@@ -42,7 +42,7 @@ def load_dicom(file_path):
     file_path = os.path.expanduser(file_path)
     file_path = file_path.strip()
     dicom = pydicom.dcmread(file_path)
-    print('shape', dicom.pixel_array.shape)
+    print('shape', dicom.pixel_array.astype(float).shape)
     if (dicom.SeriesDescription == 'cropped images'):
         return None
     return dicom.pixel_array.astype(float)
