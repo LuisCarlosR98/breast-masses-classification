@@ -6,6 +6,7 @@ from PIL import Image
 import os
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+import tensorflow as tf
 
 #Constantes para la normalización de las imágenes
 HEIGHT = 512
@@ -68,8 +69,9 @@ def preprocess_image(file_path):
         url = url.replace('1-2.dcm', '1-1.dcm')
         image = load_dicom(url)
     gray_image = gray_scale(image)
-    resized_image = gray_image.resize((WIDTH, HEIGHT, 3))
+    resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
+    np_rx = tf.image.grayscale_to_rgb(np_rx)
     print('np_rx.shape', np_rx.shape)
     np_rx = np.expand_dims(np_rx, axis = -1)
     return np_rx
