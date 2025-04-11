@@ -42,7 +42,6 @@ def load_dicom(file_path):
     file_path = os.path.expanduser(file_path)
     file_path = file_path.strip()
     dicom = pydicom.dcmread(file_path)
-    print('shape', dicom.pixel_array.astype(float).shape)
     if (dicom.SeriesDescription == 'cropped images'):
         return None
     return dicom.pixel_array.astype(float)
@@ -71,8 +70,8 @@ def preprocess_image(file_path):
     gray_image = gray_scale(image)
     resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
-    np_rx = np.expand_dims(np_rx, axis = -1)
     print('np_rx.shape', np_rx.shape)
+    np_rx = np.expand_dims(np_rx, axis = -1)
     return np_rx
 
 # Función para mostrar una imagen
