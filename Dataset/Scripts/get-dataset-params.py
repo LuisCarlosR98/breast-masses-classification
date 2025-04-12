@@ -58,6 +58,7 @@ def normalize_image(image_array):
 def gray_scale(image_array):
     scaled_image=(np.maximum(image_array,0)/image_array.max())*255
     scaled_image=np.uint8(scaled_image)
+    scaled_image = applyCLAHE(scaled_image)
     return Image.fromarray(image_array)
 
 def applyCLAHE(image_array):
@@ -78,7 +79,7 @@ def preprocess_image(file_path):
     resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
     np_rx = np.expand_dims(np_rx, axis = -1)
-    return applyCLAHE(np_rx)
+    return np_rx
 
 # Función para mostrar una imagen
 def printRx(img):
