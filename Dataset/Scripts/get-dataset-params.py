@@ -7,6 +7,7 @@ import os
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import cv2
 
 #Constantes para la normalización de las imágenes
 HEIGHT = 256
@@ -59,6 +60,11 @@ def gray_scale(image_array):
     scaled_image=np.uint8(scaled_image)
     return Image.fromarray(image_array)
 
+def applyCLAHE(image_array):
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+    clahe_image = clahe.apply(image_array)
+    return clahe_image
+
 # Función para preprocesar una imagen
 def preprocess_image(file_path):
     file_path_name = file_path.replace('000000.dcm', '1-1.dcm').replace('000001.dcm', '1-2.dcm')
@@ -72,7 +78,7 @@ def preprocess_image(file_path):
     resized_image = gray_image.resize((WIDTH, HEIGHT))
     np_rx = np.array(resized_image)
     np_rx = np.expand_dims(np_rx, axis = -1)
-    return np_rx
+    return applyCLAHE(np_rx)
 
 # Función para mostrar una imagen
 def printRx(img):
