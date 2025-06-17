@@ -131,7 +131,7 @@ for index in tqdm(range(filtered_mlo_dataframe_tra.shape[0])):
     path_roi_mask = filtered_mlo_dataframe_tra.iloc[index]['ROI mask file path']
     file_procces = preprocess_image(path_mm)
     file_roi_mask_procces = preprocess_image(path_roi_mask)
-    dic_tr[patient_id + '_' + orientation_breast] = {
+    dic_tr[index + '_' + patient_id + '_' + orientation_breast] = {
         'patient_id': patient_id,
         'left_or_right_breast': orientation_breast,
         'mass_shape': filtered_mlo_dataframe_tra.iloc[index]['mass shape'],
