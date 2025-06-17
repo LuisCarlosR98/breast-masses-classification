@@ -121,27 +121,29 @@ filtered_mlo_dataframe_tst = process_csv(csv_file_path_test)
 print(f"Total registros entrenamiento MLO: {filtered_mlo_dataframe_tra.shape[0]}")
 print(f"Total registros test MLO: {filtered_mlo_dataframe_tst.shape[0]}")
 #filtered_mlo_dataframe.shape[0]
-""" dic = {}
-for index in tqdm(range(filtered_mlo_dataframe.shape[0])):
-    patient_id = filtered_mlo_dataframe.iloc[index]['patient_id']
-    orientation_breast = filtered_mlo_dataframe.iloc[index]['left or right breast']
-    path_mm = filtered_mlo_dataframe.iloc[index]['image file path']
-    path_roi_mask = filtered_mlo_dataframe.iloc[index]['ROI mask file path']
+dic_tr = {}
+dic_ts = {}
+
+for index in tqdm(range(filtered_mlo_dataframe_tra.shape[0])):
+    patient_id = filtered_mlo_dataframe_tra.iloc[index]['patient_id']
+    orientation_breast = filtered_mlo_dataframe_tra.iloc[index]['left or right breast']
+    path_mm = filtered_mlo_dataframe_tra.iloc[index]['image file path']
+    path_roi_mask = filtered_mlo_dataframe_tra.iloc[index]['ROI mask file path']
     file_procces = preprocess_image(path_mm)
     file_roi_mask_procces = preprocess_image(path_roi_mask)
-    dic[patient_id + '_' + orientation_breast] = {
+    dic_tr[patient_id + '_' + orientation_breast] = {
         'patient_id': patient_id,
         'left_or_right_breast': orientation_breast,
-        'mass_shape': filtered_mlo_dataframe.iloc[index]['mass shape'],
-        'pathology': filtered_mlo_dataframe.iloc[index]['pathology'],
+        'mass_shape': filtered_mlo_dataframe_tra.iloc[index]['mass shape'],
+        'pathology': filtered_mlo_dataframe_tra.iloc[index]['pathology'],
         'image_file_numpy': file_procces,
         'roi_mask_file_numpy': file_roi_mask_procces
     }
 
 # Crear los directorios si no existen
-os.makedirs(os.path.dirname(PATH_DATASET), exist_ok=True)
+os.makedirs(os.path.dirname(PATH_DATASET_TR), exist_ok=True)
 
-with open(PATH_DATASET, "wb") as f:
-    pickle.dump(dic, f) """
+with open(PATH_DATASET_TR, "wb") as f:
+    pickle.dump(dic_tr, f)
 
 print('Finishing.....')
