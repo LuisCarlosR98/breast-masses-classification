@@ -116,8 +116,10 @@ csv_file_path_training = '~/Cancer/mass_case_description_train_set.csv'
 csv_file_path_test = '~/Cancer/mass_case_description_test_set.csv'
 
 # Llamar a la función y obtener el DataFrame filtrado
-filtered_mlo_dataframe = process_csv(csv_file_path_training)
-print(f"Total registros MLO: {filtered_mlo_dataframe.shape[0]}")
+filtered_mlo_dataframe_tra = process_csv(csv_file_path_training)
+filtered_mlo_dataframe_tst = process_csv(csv_file_path_test)
+print(f"Total registros entrenamiento MLO: {filtered_mlo_dataframe_tra.shape[0]}")
+print(f"Total registros test MLO: {filtered_mlo_dataframe_tst.shape[0]}")
 #filtered_mlo_dataframe.shape[0]
 """ dic = {}
 for index in tqdm(range(filtered_mlo_dataframe.shape[0])):
